@@ -170,4 +170,21 @@ header {
 .finder_right img {margin-top: 143px; padding-left: 224px;}
 
 /* 푸터 */
-footer {width: 100%; height: 650px; background: #e9e9e9; margin-top: 243px;}
+footer {width: 100%; height: 650px; background: #252525; margin-top: 243px;}
+.f_contents .f_top {width:1379px ; margin: 0 auto; display: flex; justify-content: space-between;}
+.f_contents .f_bottom {width: 1384px; margin: 0 auto;}
+
+.f_txt , .f_bottom_right {display: flex; flex-flow: row nowrap;}
+.f_txt_service_contents {display: flex; flex-flow: row nowrap;}
+.service {display: flex; flex-flow: column nowrap;}
+.f_top {display: flex; flex-flow: row nowrap;}
+
+.f_contents h3 {font-weight: 600; color: #ffffff; padding-right: 54px;}
+.f_contents h3::after {
+    content: '';
+
+    content: ''; position: absolute; left: 50%; top: 70%;
+    display: inline-block; width: 18px; height: 2px; background-color:#664B4B; opacity: 50%;
+}
+.f_contents li a {font-size:0.875rem; color: #ffffff;}
+.f_contents li {padding-bottom:25px ;}
