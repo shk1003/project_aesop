@@ -14,13 +14,17 @@ header {
 header:hover {width: 100%; height: 82px; background-color: #ffffff; z-index: 9999; }
 header:hover #gnb a {color: #3F3939; font-weight: 600;}
 header:hover img {content: url("../images/Rectangle-1.png");}
-.sub_menu {position: absolute; top: 100%; display: flex; flex-flow: row nowrap; left: 15%;} 
-.sub_menu_txt {display: flex; flex-flow: column nowrap;}
+.sub_menu {position: absolute; top: 100%; display: flex; flex-flow: row nowrap; left: 0;  width: 100%; display: none;} 
+
+#gnb > ul > li:hover .sub_menu {
+    display: block;
+}
+.sub_menu_txt {display: flex; flex-flow: column nowrap;width: 100%; height: 318px; background: #fff; padding-left: 298px;}
 
 
 
 
-
+h1 {font-family: 'Sorts Mill Goudy', serif;}
 /* 메인배너 */
 .main_contents {
     position: absolute; z-index: 10; top: 50%; left: 18%;
@@ -37,7 +41,8 @@ header:hover img {content: url("../images/Rectangle-1.png");}
     justify-content: center; align-items: center; height: 760px; gap: 59px;
 }
 .category_img {display: flex; flex-flow: row nowrap; gap: 10px;}
-.category_txt > h1 {font-size: 3.125rem; position: relative; display: inline-block; padding-bottom: 62px;}
+.category_txt > h1 {font-size: 3.125rem; position: relative; display: inline-block; padding-bottom: 62px; color: #4E3939;}
+.category_txt > p {line-height: 150% ; color: #3F3939;}
 .category_txt > h1::after {
     content: ''; position: absolute; left: 50%; top: 70%;
     display: inline-block; width: 18px; height: 2px; background-color:#664B4B; opacity: 50%;
@@ -51,6 +56,29 @@ header:hover img {content: url("../images/Rectangle-1.png");}
 
 .img2 {padding-bottom:5px ;}
 .img3 a {padding-right: 7px;}
+
+
+
+
+.category_img a {
+    position: relative;
+    display: inline-block;
+    overflow: hidden; /* 이거 필수! */
+}
+.category_img a img {
+    display: block; /* 이거도 필수, 기본 inline이면 하단여백 생김 */
+}
+
+
+.category_img a::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
 
 /* 뉴 프래그런스 */
 .fragrance {
