@@ -1,5 +1,6 @@
 #wrap {width: 100%; min-width: 1900px;}
 header {min-width: 1900px;}
+
 /* 헤더 */
 header {
     display: flex; flex-flow: row nowrap; height: 82px; 
@@ -10,18 +11,85 @@ header {
 #gnb > ul > li > a {color: #DBDBDB;}
 .right_lnb {display: flex; flex-flow: row nowrap; gap: 23px;}
 
-/* 헤더 마우스 올렸을때 */
-header:hover {width: 100%; height: 82px; background-color: #ffffff; z-index: 9999; }
-header:hover #gnb a {color: #3F3939; font-weight: 600;}
-header:hover img {content: url("../images/Rectangle-1.png");}
-.sub_menu {position: absolute; top: 100%; display: flex; flex-flow: row nowrap; left: 0;  width: 100%; display: none;} 
 
-#gnb > ul > li:hover .sub_menu {
+/* 헤더에 마우스 올렸을때 */
+header:hover {
+    width: 100%;
+    background-color: #ffffff;
+    z-index: 999;
+}
+
+header #gnb > ul > li > a {display: block; width: 100%; padding: 41px 0; position: relative; }
+
+header #gnb > ul > li > a::after { /* 각메뉴 밑줄 */
+    content: '';
+    position: absolute;
+    z-index: 9999;
+    bottom:8% ;
+    left: 50%; transform: translateX(-50%);
+    width: 130px;
+    height: 2px;
+    background-color: #303030;
+    display: none;
+}
+header #gnb > ul > li > a:hover::after {
     display: block;
 }
-.sub_menu_txt {display: flex; flex-flow: column nowrap;width: 100%; height: 318px; background: #fff; padding-left: 298px;}
+
+header:hover::after { /* 헤더 밑줄 */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #DBDBDB;
+}
+header:hover #gnb .sub_menu_txt li a {
+    color: #6D6D6D;
+    font-size: 0.875rem;
+}
+header:hover #gnb > ul > li > a {color: #3F3939; font-weight: 600;} /* 마우스 올렸을때 헤더 */
+header:hover #gnb .sub_menu_txt li:first-child > a {color: #3F3939; font-weight: 600; font-size: 0.938rem; display: block; padding-bottom: 23px;}
+
+header:hover .logo {
+    content: url("../images/Rectangle-1.png");
+}
+header:hover .search-icon path {
+    fill: #FF6600;
+}
 
 
+.sub_menu { /* 서브메뉴  */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100vw;
+    height: 318px;
+    background: #fff;
+    display: none;
+    padding: 27px 0 0 298px;
+}
+#gnb > ul > li:hover .sub_menu {
+    display: flex;
+}
+.sub_menu:hover  #gnb > ul > li > a:hover::after {
+    display: block;
+}
+
+.sub_menu_txt {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 14px;
+    padding-right: 150px;
+}
+.sub_menu_img {
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+}
+.sub_menu_img a {font-size: 0.938rem; color: #3F3939; font-weight: 600; padding-bottom: 18px; text-align: left;}
+.sub_menu_img {padding-right: 14px;}
 
 
 h1 {font-family: 'Sorts Mill Goudy', serif;}
@@ -30,8 +98,9 @@ h1 {font-family: 'Sorts Mill Goudy', serif;}
     position: absolute; z-index: 10; top: 50%; left: 18%;
 }
 .main_txt {font-size: 4rem;}
-.main_txt h1,h2 {color: #fff;  font-family: 'Sorts Mill Goudy', serif; padding-bottom: 11px;}
-.main_txt h2 {font-size:2rem ;}
+.main_txt > h1 {color: #fff;  font-family: 'Sorts Mill Goudy', serif; padding-bottom: 11px;}
+.main_txt > h2 {color: #fff;  font-family: 'Sorts Mill Goudy', serif; padding-bottom: 11px;}
+.main_txt > h2 {font-size:2rem ;}
 .main_button {color: #fff; font-size: 0.875rem; border: 1px solid #fff; width: 112px; height: 37px; margin-top: 56px;}
 #main_bnr {position: relative;}
 
@@ -55,10 +124,9 @@ h1 {font-family: 'Sorts Mill Goudy', serif;}
 .hometxt, .hairtxt {position: absolute;left: 50%; transform: translateX(-50%); top: 50%;}
 
 .img2 {padding-bottom:5px ;}
-.img3 a {padding-right: 7px;}
+.img3 {display:flex; gap:10px;}
 
-
-
+.category_img span {color: #fff; font-size: 1.375rem;}
 
 .category_img a {
     position: relative;
@@ -69,7 +137,6 @@ h1 {font-family: 'Sorts Mill Goudy', serif;}
     display: block; /* 이거도 필수, 기본 inline이면 하단여백 생김 */
 }
 
-
 .category_img a::after {
     content: '';
     position: absolute;
@@ -79,14 +146,32 @@ h1 {font-family: 'Sorts Mill Goudy', serif;}
     z-index: 1;
 }
 
+.category_img a::after {
+    opacity: 0;
+}
+.category_img a:hover::after {
+    opacity: 1;
+}
+
+
+.category_img a div {
+    opacity: 0;
+    z-index: 2; /* ::after보다 위에 오게 */
+    position: absolute;
+}
+.category_img a:hover div {
+    opacity: 1;
+}
+
 
 /* 뉴 프래그런스 */
 .fragrance {
     display: flex; flex-flow: row nowrap; justify-content: space-between; align-items: center;
     background: #F9F9F9; height: 805px;
 }
-.fragrance_txt {text-align: center;}
-.fragrance_txt > h1 {font-size:3.125rem ; position: relative; display: inline-block; padding-bottom: 62px;}
+.fragrance_txt {text-align: center; }
+.fragrance_txt > h1 {font-size:3.125rem ; position: relative; display: inline-block; padding-bottom: 62px; color:#4E3939 ;}
+.fragrance_txt > p {color:#3F3939 ; line-height:150% ;}
 .fragrance_txt > h1::after {
     content: ''; position: absolute; left: 50%; top: 70%;
     display: inline-block; width: 18px; height: 2px; background-color:#664B4B; opacity: 50%;
@@ -96,8 +181,9 @@ h1 {font-family: 'Sorts Mill Goudy', serif;}
 #more_button {
     width: 176px; height: 59px; text-align: center; margin-top:58px ;
     background-color: #4E3939; line-height: 59px; display: inline-block; text-align: center;
+    font-size: 0.875rem; color: #fff;
 }
-
+#more_button svg {padding-left: 10px; }
 .top_img img {padding-bottom: 23px;}
 .bottom_img img:first-child {padding-right:23px ;}
 
@@ -105,9 +191,14 @@ h1 {font-family: 'Sorts Mill Goudy', serif;}
 
 /* 퍼스널 텍스트 */
 .personal {text-align: center;}
-.personal_txt > h1{font-size: 2.813rem; padding-top: 114px;}
-.personal_txt > span {display: block; padding: 30px 0;}
-.personal_txt > p {padding-bottom: 73px;}
+.personal_txt > h1{font-size: 2.813rem; padding-top: 114px; color: #4E3939;}
+.personal_txt > span {
+    display: flex; background: #664B4B; width: 48px; height: 27px; justify-content: center; align-items: center;
+    text-align: center; margin: 30px auto; opacity: 0.6; color: #fff; font-size: 0.875rem; border-radius: 10px;
+}
+.personal_txt > p {padding-bottom: 73px; color:#3F3939 ; font-size: 0.938rem; line-height: 150%;}
+
+
 
 /* 퍼스널 스와이퍼 ----------아워컬렉션 아이템 */
 #Personal_item {
@@ -121,8 +212,9 @@ h1 {font-family: 'Sorts Mill Goudy', serif;}
 }
 .product_contents img {padding-top: 60px;}
 .product_txt {text-align: left; padding-left:39px ;}
-.product_txt a > h2 {padding-bottom:23px ;}
-.product_txt > p {padding-bottom:15px; line-height: 150%; font-size: 0.813rem;}
+.product_txt a > h2 {padding-bottom:23px ; color: #141414; }
+.product_txt > p {padding-bottom:15px; line-height: 150%; font-size: 0.813rem; font-size:0.813rem ; color:#404040 ;}
+.product_txt > span {font-size: 0.938rem; color: #141414;}
 .heart {position: absolute; right: 24px; top: 24px;}
 
 /* 기프트 */
@@ -137,30 +229,36 @@ h1 {font-family: 'Sorts Mill Goudy', serif;}
 }
 .gift {display: flex; flex-flow: row nowrap;}
 .right_gift {text-align: center; display: flex; flex-flow: column nowrap; justify-content: center; align-items: center;}
-.right_gift_txt >h1{font-size: 3.125rem; padding-bottom: 62px;}
-.right_gift_txt .txt1 {display: block; padding-bottom: 30px;}
-.right_gift_txt span {display: block; padding-bottom: 76px;}
-#gift_more_btn {width:176px ; height: 45px; border: 1px solid #C2C2C2;}
+.right_gift_txt >h1{font-size: 3.125rem; padding-bottom: 62px; color: #4E3939;}
+.right_gift_txt .txt1 {display: block; padding-bottom: 30px; }
+.right_gift_txt span {display: block; padding-bottom: 76px; color: #3F3939;line-height: 150%; }
+#gift_more_btn {width:176px ; height: 45px; border: 1px solid #C2C2C2; font-size: 0.875rem; color: #404040;}
+#gift_more_btn svg {padding-left:10px ;}
 
 /* 아워컬렉션 */
 .our_txt {text-align: center; padding-top: 167px; padding-bottom: 69px;}
-.our_txt > h1 {font-size: 2.813rem; position: relative; display: inline-block; padding-bottom: 62px;}
+.our_txt > h1 {font-size: 2.813rem; position: relative; display: inline-block; padding-bottom: 62px;  color: #4E3939 ;}
+.our_txt > p {font-size: 0.938rem; color: #3F3939;}
 .our_txt > h1::after {
     content: ''; position: absolute; left: 50%; top: 70%;
     display: inline-block; width: 18px; height: 2px; background-color:#664B4B; opacity: 50%;
 }
-#our_btn {width: 124px; height: 47px; border: 1px solid #DBDBDB; display: block; margin: 60px auto 181px;}
+#our_btn {width: 124px; height: 47px; border: 1px solid #DBDBDB; display: block; margin: 60px auto 181px; font-size: 0.75rem; color: #141414;}
 
 .our_item > .product {background:#F9F9F9 ; width: 345px; height: 427px;}
 .our_item {display: flex; flex-flow: row nowrap; justify-content: space-between; width: 1440px; margin: 0 auto;}
 .item2 {padding: 40px 0;}
+.product_txt a > h2 {color: #141414;}
+.product_txt a > p {color: #404040; font-size:0.813rem ;}
+.product_txt a > span {font-size: 0.938rem; color: #141414;}
 
 /* neighbourly광고 */
 .neighbourly {position: relative;}
 .neighbourly .nei_txt {position: absolute; top: 35%; right: 16%; color: #fff; text-align: center;}
-.neighbourly .nei_txt > h1 {color: #fff; font-size: 3.125rem; padding-bottom: 25px;}
-.neighbourly .nei_txt > p {color: #fff; text-align: left; padding-bottom: 78px;}
-.neighbourly #nei_btn {color: #fff; border: 1px solid #D9D9D9; width: 214px; height: 45px; }
+.neighbourly .nei_txt > h1 {color: #E8E8E8; font-size: 3.125rem; padding-bottom: 25px;}
+.neighbourly .nei_txt > p {color: #E8E8E8; text-align: left; padding-bottom: 78px; line-height: 150%;}
+.neighbourly #nei_btn {color: #fff; border: 1px solid #D9D9D9; width: 214px; height: 45px; color: #D9D9D9; font-size: 0.875rem;}
+.neighbourly #nei_btn svg {padding-left: 10px;}
 
 .neighbourly {background-image: 
     linear-gradient(to left, 
@@ -178,7 +276,6 @@ h1 {font-family: 'Sorts Mill Goudy', serif;}
 /* 리딩 배너 */
 .reading {margin-top: 183px;}
 .reading_bg {
-
     background-image: 
     linear-gradient(to left, 
         /* 1. 오른쪽 끝(0%)을 가장 진하게 설정 (거의 검은색) */
@@ -194,30 +291,32 @@ h1 {font-family: 'Sorts Mill Goudy', serif;}
 .reading_size {width: 1440px; margin: 0 auto; display: flex; flex-flow: row nowrap; } 
 
 .reading_right {text-align: left; padding-left: 201px; padding-top: 260px;}
-.reading_right > p {line-height: 150%; font-size: 0.875rem;}
-.reading_right > p:first-child {padding-bottom:22px ; font-size: 0.938rem;}
-#reading_btn {width: 250px; height: 43px; border: 1px solid #D9D9D9; margin-top: 71px; font-size: 0.875rem;}
+.reading_right > p {line-height: 150%; font-size: 0.875rem; color: #D9D9D9; line-height: 180%;}
+.reading_right > p:first-child {padding-bottom:22px ; font-size: 0.938rem; line-height: 150%;}
+#reading_btn {width: 250px; height: 43px; border: 1px solid #D9D9D9; margin-top: 71px; font-size: 0.875rem; color: #D9D9D9;}
+#reading_btn svg {padding-left: 10px;}
 
 .reading_left img {transform: translateY(0);}/* 배너 왼쪽 겹쳐진 이미지 */
-.reading_left > h1 {font-size: 3.125rem; padding-top: 142px;}
-.reading_left > p {padding-bottom: 44px; padding-top: 16px; }
+.reading_left > h1 {font-size: 3.125rem; padding-top: 142px; color: #ffffff;}
+.reading_left > p {padding-bottom: 44px; padding-top: 16px; color: #D0D0D0;}
 
 /* 프래그런스 파인더 */
 .finder_bg {
     background-image: url(../images/bottom_img.png); width: 100%; height: 886px;
     display: flex; flex-flow: row nowrap; justify-content: right;
 }
-.finder_left {background: yellow; padding-top:296px ; text-align: right;}
-.finder_left >h1 {font-size: 3.125rem; padding-bottom: 55px;}
-.finder_left >p {padding-bottom: 41px; text-align: right;}
-#finder_btn {width: 250px; height: 43px; border: 1px solid #3F3939;}
+.finder_left {padding-top:296px ; text-align: right;}
+.finder_left >h1 {font-size: 3.125rem; padding-bottom: 55px; color: #4E3939; line-height: 150%;}
+.finder_left >p {padding-bottom: 41px; text-align: right; color:#3F3939; line-height: 150%}
+#finder_btn {width: 250px; height: 43px; border: 1px solid #3F3939; font-size: 0.875rem;}
+#finder_btn svg {padding-left: 15px;}
 .finder_right img {margin-top: 143px; padding-left: 224px;}
 
 /* 푸터 */
 footer {width: 100%; height: 650px; background: #252525; margin-top: 243px;}
 .f_contents .f_top {
     width:1379px ; margin: 0 auto; display: flex; justify-content: space-between;
-    padding-top: 45px;
+    
 }
 .position_contents {padding-top: 80px;}
 
@@ -240,4 +339,12 @@ footer {width: 100%; height: 650px; background: #252525; margin-top: 243px;}
 .f_contents li a {font-size:0.875rem; color: #ffffff;}
 .f_contents li {padding-bottom:25px ;}
 
+/* 푸터 하단 */
 .f_bottom_right ul > li {width: 482px;}
+.f_bottom_left h4 {color: #ffffff; font-weight: 600; padding-bottom: 15px;}
+.f_bottom_left .sub {color: #ffffff; font-size: 0.875rem; padding-bottom: 22px;}
+#sub_txt {width:584px ; height:38px ; background: 0; border: 1px solid #ffffff; padding: 10px; color: #ffffff; font-size: 0.875rem; margin-bottom: 16px;}
+.f_bottom_left .box {display: flex; flex-flow: row nowrap; }
+.box_txt {font-size:0.813rem ; color: #ffffff; line-height: 130%; padding-left: 10px;}
+.f_bottom_right ul li {line-height: 150%; font-size: 0.875rem; color: #ffffff; font-weight: 400; }
+.f_bottom_right {margin-left: 80px;}
