@@ -96,6 +96,9 @@ header:hover .login svg path {
 .sub_menu_img a {font-size: 0.938rem; color: #3F3939; font-weight: 600; padding-bottom: 18px; text-align: left;}
 .sub_menu_img {padding-right: 14px;}
 
+.sub_menu_txt li:not(:first-child) a:hover { /* 서브메뉴 마우스올렸을 때 각 메뉴에 밑줄 */
+    text-decoration: underline; 
+}
 
 h1 {font-family: 'Sorts Mill Goudy', serif;}
 
@@ -108,7 +111,10 @@ h1 {font-family: 'Sorts Mill Goudy', serif;}
 .main_txt > h1 {color: #fff;  font-family: 'Sorts Mill Goudy', serif; padding-bottom: 11px;}
 .main_txt > h2 {color: #fff;  font-family: 'Sorts Mill Goudy', serif; padding-bottom: 11px;}
 .main_txt > h2 {font-size:2rem ;}
-.main_button {color: #fff; font-size: 0.875rem; border: 1px solid #fff; width: 112px; height: 37px; margin-top: 56px;}
+
+.main_button {color: #fff; font-size: 0.875rem; border: 1px solid #fff; width: 112px; height: 37px; margin-top: 56px; transition: all 0.3s ease;}
+.main_button:hover {background-color: #E8E8E8; color: #4E3939; font-size: 0.875rem; border: 1px solid #fff; width: 112px; height: 37px; margin-top: 56px;}
+
 #main_bnr {position: relative;}
 .main_txt2 .bnr_2 {font-size: 3rem; color:#ffffff ; margin-bottom: 25px;}
 .main_txt2 .bnr_txt {color:#ffffff ; line-height: 150%;}
@@ -303,9 +309,13 @@ transform: scale(1.05); /* 카테고리 마우스 올리면 이미지확대*/
 .neighbourly .nei_txt {position: absolute; top: 35%; right: 16%; color: #fff; text-align: center;}
 .neighbourly .nei_txt > h1 {color: #E8E8E8; font-size: 3.125rem; padding-bottom: 25px;}
 .neighbourly .nei_txt > p {color: #E8E8E8; text-align: left; padding-bottom: 78px; line-height: 150%;}
-.neighbourly #nei_btn {color: #fff; border: 1px solid #D9D9D9; width: 214px; height: 45px; color: #D9D9D9; font-size: 0.875rem;}
-.neighbourly #nei_btn svg {padding-left: 10px;}
-
+.neighbourly #nei_btn {color: #fff; border: 1px solid #D9D9D9; width: 214px; height: 45px; color: #D9D9D9; font-size: 0.875rem; transition: all 0.3s ease; }
+.neighbourly #nei_btn svg {padding-left: 10px; fill :#4E3939 ;  transition: fill 0.3s ease;}
+.neighbourly #nei_btn:hover {
+    background: #E8E8E8;
+    color: #4E3939;
+}
+#nei_btn:hover svg path {fill :#4E3939 ;}
 
 .neighbourly {background-image: 
     linear-gradient(to left, 
@@ -340,8 +350,16 @@ transform: scale(1.05); /* 카테고리 마우스 올리면 이미지확대*/
 .reading_right {text-align: left; padding-left: 201px; padding-top: 260px;}
 .reading_right > p {line-height: 150%; font-size: 0.875rem; color: #D9D9D9; line-height: 180%;}
 .reading_right > p:first-child {padding-bottom:22px ; font-size: 0.938rem; line-height: 150%;}
-#reading_btn {width: 250px; height: 43px; border: 1px solid #D9D9D9; margin-top: 71px; font-size: 0.875rem; color: #D9D9D9;}
+#reading_btn {width: 250px; height: 43px; border: 1px solid #D9D9D9; margin-top: 71px; font-size: 0.875rem; color: #D9D9D9; transition: all 0.3s ease;}
 #reading_btn svg {padding-left: 10px;}
+
+#reading_btn svg path {fill :#E8E8E8 ;  transition: fill 0.3s ease;}
+#reading_btn:hover {
+    background: #E8E8E8;
+    color: #4E3939;;
+}
+#reading_btn:hover svg path {fill :#4E3939 ;}
+
 
 .reading_left img {transform: translateY(0);}/* 배너 왼쪽 겹쳐진 이미지 */
 .reading_left > h1 {font-size: 3.125rem; padding-top: 142px; color: #ffffff;}
@@ -355,8 +373,16 @@ transform: scale(1.05); /* 카테고리 마우스 올리면 이미지확대*/
 .finder_left {padding-top:296px ; text-align: right;}
 .finder_left >h1 {font-size: 3.125rem; padding-bottom: 55px; color: #4E3939; line-height: 150%;}
 .finder_left >p {padding-bottom: 41px; text-align: right; color:#3F3939; line-height: 150%}
-#finder_btn {width: 250px; height: 43px; border: 1px solid #3F3939; font-size: 0.875rem;}
+
+#finder_btn {width: 250px; height: 43px; border: 1px solid #3F3939; font-size: 0.875rem; transition: all 0.3s ease;}
 #finder_btn svg {padding-left: 15px;}
+#finder_btn svg path {fill :#4E3939 ;  transition: fill 0.3s ease;}
+#finder_btn:hover {
+    background: #4E3939;
+    color: #ffffff;
+}
+#finder_btn:hover svg path {fill :#ffffff ;}
+
 .finder_right img {margin-top: 143px; padding-left: 224px;}
 
 /* 푸터 */
